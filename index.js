@@ -15,7 +15,7 @@ const data1 = [
   [3, 7],
 ];
 
-var indicator = Array(1000).fill(0);
+// var indicator = Array(1000).fill(0);
 const newArray = data1.sort((a, b) => a[0] - b[0]);
 console.log(newArray);
 
@@ -86,22 +86,38 @@ const logic = () => {
   console.log(test);
   var index = allDetail.indexOf(test);
   console.log(index);
-  const testArray = newArray.splice(index, 1);
 
-  console.log(testArray);
+  var final = newArray[0][1] - newArray[0][0];
+  console.log(newArray[0][1]);
+  console.log(newArray[0][0]);
 
-  var final = 0;
-  for (let j = 0; j < testArray.length - 1; j++) {
-    if (j === 0) {
-      testArray[j][1] > testArray[j + 1][0]
-        ? (final += testArray[j + 1][0] - testArray[j][0])
-        : (final += testArray[j][1] - testArray[j][0]);
-    } else if (j > 0 && j < testArray.length - 1) {
-    } else if (j === testArray.length - 1) {
+  for (let j = 0; j < newArray.length; j++) {
+    if (j === index) {
+      final = final;
+    } else {
+      if (j === 0) {
+        final += newArray[0][1] - newArray[0][0];
+      } else if (j > 0 && j < newArray.length - 1) {
+        if (newArray[j + 1][0] < newArray[j][1]) {
+          if (newArray[j + 1][1] > newArray[j][1]) {
+            final += newArray[j][1] - newArray[j + 1][0];
+          } else {
+            final = final;
+          }
+        }
+      } else if (j === newArray.length - 1) {
+        if (newArray[j][0] < newArray[j - 1][1]) {
+          if (newArray[j][1] > newArray[j - 1][1]) {
+            final += newArray[j][1] - newArray[j - 1][1];
+          } else {
+            final = final;
+          }
+        }
+      }
     }
   }
 
-  return allDetail;
+  console.log(`final: ${final}`);
 };
 
 logic();
