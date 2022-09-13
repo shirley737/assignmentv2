@@ -483,10 +483,12 @@ const fs = require("fs");
 var data = fs.readFileSync("1.in", "utf-8").split("\n");
 var newTest = [];
 for (let i = 1; i < data.length - 1; i++) {
-  data[i] = data[i].split(/[ ,]+/).join(",");
-  data[i] = data[i].replace(/'/, "[").replace(/'/, "]");
+  data[i].split("");
+  console.log(data[i][1]);
+  // data[i] = data[i].replace(/'/, "[").replace(/'/, "]");
   newTest.push(data[i]);
 }
+console.log(newTest);
 
 const newArray = data2.sort((a, b) => a[0] - b[0]);
 const logic = () => {
@@ -536,7 +538,22 @@ const logic = () => {
         newArray[i - 1][1] < newArray[i][0] &&
         newArray[i + 1][0] > newArray[i][1]
       ) {
-        allDetail.push(allDetail.push(newArray[i][1] - newArray[i][0]));
+        allDetail.push(newArray[i][1] - newArray[i][0]);
+      } else if (
+        newArray[i - 1][0] < newArray[i][0] &&
+        newArray[i][1] < newArray[i - 1][1]
+      ) {
+        allDetail.push(0);
+      } else if (
+        newArray[i][0] < newArray[i + 1][0] &&
+        newArray[i][1] > newArray[i + 1][1]
+      ) {
+        allDetail.push(
+          newArray[i][1] -
+            newArray[i][0] -
+            (newArray[i + 1][0] - newArray[i][0]) -
+            (newArray[i][1] - newArray[i + 1][1])
+        );
       }
     } else if (i === newArray.length - 1) {
       if (newArray[i - 1][1] > newArray[i][0]) {
@@ -551,6 +568,7 @@ const logic = () => {
     }
   }
 
+  console.log(allDetail);
   var test = Math.min(...allDetail);
   var index = allDetail.indexOf(test);
   console.log(test);
