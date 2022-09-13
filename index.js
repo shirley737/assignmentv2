@@ -1,4 +1,4 @@
-// import data1 from "./Data/1";
+// import { data1 } from "../Data/1";
 // import data2 from "./Data/2";
 // import data3 from "./Data/3";
 // import data4 from "./Data/4";
@@ -15,9 +15,7 @@ const data1 = [
   [3, 7],
 ];
 
-// var indicator = Array(1000).fill(0);
 const newArray = data1.sort((a, b) => a[0] - b[0]);
-console.log(newArray);
 
 const logic = () => {
   var allDetail = [];
@@ -81,45 +79,37 @@ const logic = () => {
     }
   }
 
-  console.log(allDetail);
   var test = Math.min(...allDetail);
-  console.log(test);
   var index = allDetail.indexOf(test);
-  console.log(index);
   testArray = newArray.filter(function (item) {
     return item !== newArray[index];
   });
 
-  console.log(testArray);
-
   var final = 0;
-
   for (let j = 0; j < testArray.length; j++) {
-    if (j === index) {
-      final = final;
-    } else {
-      if (j === 0) {
-        final += testArray[0][1] - testArray[0][0];
-      } else if (j > 0 && j < testArray.length - 1) {
-        if (testArray[j + 1][0] < testArray[j][1]) {
-          if (testArray[j + 1][1] > testArray[j][1]) {
-            final += testArray[j][1] - testArray[j + 1][0];
-          } else {
-            final = final;
-          }
+    if (j === 0) {
+      final += testArray[0][1] - testArray[0][0];
+    } else if (j > 0 && j < testArray.length - 1) {
+      if (testArray[j + 1][0] < testArray[j][1]) {
+        if (testArray[j + 1][1] > testArray[j][1]) {
+          final += testArray[j][1] - testArray[j + 1][0];
+        } else {
+          final = final;
         }
-      } else if (j === testArray.length - 1) {
-        if (testArray[j][0] < testArray[j - 1][1]) {
-          if (testArray[j][1] > testArray[j - 1][1]) {
-            final += testArray[j][1] - testArray[j - 1][1];
-          } else {
-            final = final;
-          }
+      }
+    } else if (j === testArray.length - 1) {
+      console.log(j);
+      if (testArray[j][0] < testArray[j - 1][1]) {
+        if (testArray[j][1] > testArray[j - 1][1]) {
+          final += testArray[j][1] - testArray[j - 1][1];
+        } else {
+          final = final;
         }
+      } else {
+        final += testArray[j][1] - testArray[j][0];
       }
     }
   }
-
   console.log(`final: ${final}`);
 };
 
