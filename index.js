@@ -490,7 +490,7 @@ const data2 = [
 // }
 // console.log(newTest);
 
-const newArray = data2.sort((a, b) => a[0] - b[0]);
+const newArray = data1.sort((a, b) => a[0] - b[0]);
 console.log(newArray[0]);
 const logic = () => {
   var allDetail = [];
