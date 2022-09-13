@@ -491,19 +491,33 @@ for (let i = 1; i < data.length - 1; i++) {
 console.log(newTest);
 
 const newArray = data2.sort((a, b) => a[0] - b[0]);
+console.log(newArray[0]);
 const logic = () => {
   var allDetail = [];
 
   for (let i = 0; i < newArray.length; i++) {
     if (i === 0) {
-      if (newArray[i][1] > newArray[i + 1][0]) {
+      if (
+        newArray[i][1] > newArray[i + 1][0] &&
+        newArray[i + 1][1] < newArray[i][1]
+      ) {
         allDetail.push(
           newArray[i][1] -
             newArray[i][0] -
             (newArray[i][1] - newArray[i + 1][0])
         );
-      } else {
+      } else if (newArray[i][1] < newArray[i + 1][0]) {
         allDetail.push(newArray[i][1] - newArray[i][0]);
+      } else if (
+        newArray[i + 1][1] > newArray[i][1] &&
+        newArray[i][0] < newArray[i + 1][0]
+      ) {
+        allDetail.push(
+          newArray[i + 1][1] -
+            newArray[i + 1][0] -
+            (newArray[i + 1][0] - newArray[i][0]) -
+            (newArray[i + 1][1] - newArray[i][1])
+        );
       }
     } else if (i > 0 && i < newArray.length - 1) {
       if (
