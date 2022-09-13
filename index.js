@@ -497,27 +497,14 @@ const logic = () => {
 
   for (let i = 0; i < newArray.length; i++) {
     if (i === 0) {
-      if (
-        newArray[i][1] > newArray[i + 1][0] &&
-        newArray[i + 1][1] < newArray[i][1]
-      ) {
+      if (newArray[i][1] > newArray[i + 1][0]) {
         allDetail.push(
           newArray[i][1] -
             newArray[i][0] -
             (newArray[i][1] - newArray[i + 1][0])
         );
-      } else if (newArray[i][1] < newArray[i + 1][0]) {
+      } else {
         allDetail.push(newArray[i][1] - newArray[i][0]);
-      } else if (
-        newArray[i + 1][1] > newArray[i][1] &&
-        newArray[i][0] < newArray[i + 1][0]
-      ) {
-        allDetail.push(
-          newArray[i + 1][1] -
-            newArray[i + 1][0] -
-            (newArray[i + 1][0] - newArray[i][0]) -
-            (newArray[i + 1][1] - newArray[i][1])
-        );
       }
     } else if (i > 0 && i < newArray.length - 1) {
       if (
