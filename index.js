@@ -86,29 +86,32 @@ const logic = () => {
   console.log(test);
   var index = allDetail.indexOf(test);
   console.log(index);
+  testArray = newArray.filter(function (item) {
+    return item !== newArray[index];
+  });
 
-  var final = newArray[0][1] - newArray[0][0];
-  console.log(newArray[0][1]);
-  console.log(newArray[0][0]);
+  console.log(testArray);
 
-  for (let j = 0; j < newArray.length; j++) {
+  var final = 0;
+
+  for (let j = 0; j < testArray.length; j++) {
     if (j === index) {
       final = final;
     } else {
       if (j === 0) {
-        final += newArray[0][1] - newArray[0][0];
-      } else if (j > 0 && j < newArray.length - 1) {
-        if (newArray[j + 1][0] < newArray[j][1]) {
-          if (newArray[j + 1][1] > newArray[j][1]) {
-            final += newArray[j][1] - newArray[j + 1][0];
+        final += testArray[0][1] - testArray[0][0];
+      } else if (j > 0 && j < testArray.length - 1) {
+        if (testArray[j + 1][0] < testArray[j][1]) {
+          if (testArray[j + 1][1] > testArray[j][1]) {
+            final += testArray[j][1] - testArray[j + 1][0];
           } else {
             final = final;
           }
         }
-      } else if (j === newArray.length - 1) {
-        if (newArray[j][0] < newArray[j - 1][1]) {
-          if (newArray[j][1] > newArray[j - 1][1]) {
-            final += newArray[j][1] - newArray[j - 1][1];
+      } else if (j === testArray.length - 1) {
+        if (testArray[j][0] < testArray[j - 1][1]) {
+          if (testArray[j][1] > testArray[j - 1][1]) {
+            final += testArray[j][1] - testArray[j - 1][1];
           } else {
             final = final;
           }
