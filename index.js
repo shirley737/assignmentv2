@@ -479,16 +479,16 @@ const data2 = [
   "3115012 3124433",
 ];
 
-const fs = require("fs");
-var data = fs.readFileSync("1.in", "utf-8").split("\n");
-var newTest = [];
-for (let i = 1; i < data.length - 1; i++) {
-  data[i].split("");
-  console.log(data[i][1]);
-  // data[i] = data[i].replace(/'/, "[").replace(/'/, "]");
-  newTest.push(data[i]);
-}
-console.log(newTest);
+// const fs = require("fs");
+// var data = fs.readFileSync("1.in", "utf-8").split("\n");
+// var newTest = [];
+// for (let i = 1; i < data.length - 1; i++) {
+//   data[i].split("");
+//   console.log(data[i][1]);
+//   // data[i] = data[i].replace(/'/, "[").replace(/'/, "]");
+//   newTest.push(data[i]);
+// }
+// console.log(newTest);
 
 const newArray = data2.sort((a, b) => a[0] - b[0]);
 console.log(newArray[0]);
